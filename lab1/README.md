@@ -40,4 +40,4 @@ Crie um Persistent Volume Claim (PVC) chamado data-pvc de 1Gi no namespace prod,
 
 Implemente uma Role no namespace dev que permita apenas que os usuários listem Pods.
 
-Essas questões cobrem várias áreas da CKA, como criação de P
+Essas questões cobrem várias áreas da CKA.

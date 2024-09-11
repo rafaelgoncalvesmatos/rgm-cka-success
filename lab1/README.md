@@ -1,4 +1,4 @@
-Vamos lá! Aqui estão algumas questões práticas para testar seu conhecimento atual na preparação para a CKA. Tente resolver e, se precisar de ajuda, posso te orientar.
+[]: # lab1/README.md
 
 1. Criar um Pod simples
 

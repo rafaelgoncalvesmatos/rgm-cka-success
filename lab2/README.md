@@ -1,4 +1,4 @@
-Ótimo trabalho! Agora, vou criar mais algumas questões abordando diferentes tópicos cobrindo áreas como networking, segurança, troubleshooting, e gestão de clusters. Vamos lá:
+[]: # lab2/README.md
 
 1. Criar um NodePort Service
 
@@ -39,5 +39,3 @@ Crie um Job chamado backup-job que execute o comando echo "Backup done" usando a
 10. Criar um AutoScaler
 
 Configure um Horizontal Pod Autoscaler (HPA) para o deployment web-deploy, escalando-o automaticamente entre 2 e 10 réplicas quando a utilização de CPU exceder 80%.
-
-Essas questões cobrem tópicos importantes para o exame CKA, como segurança, networking, monitoramento, gerenciamento de recursos, e troubleshooting. Pratique essas e, se tiver dúvidas ou precisar de mais explicações sobre algum tópico, estou aqui para ajudar!

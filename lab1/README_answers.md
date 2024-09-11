@@ -52,17 +52,33 @@ kubectl create deployment web-deploy --image=nginx:1.18 --replicas=3
 
 Agora, escale o web-deploy para 5 réplicas.
 
+````
+kubectl scale deployment web-deploy --replicas=5
+```` 
+
 5. Configurar um Service
 
 Crie um service chamado web-svc do tipo ClusterIP para expor o deployment web-deploy na porta 80.
 
+````
+kubectl expose deployment web-deploy --name=web-svc --port=80 --target-port=80 --type=ClusterIP
+````
+
 6. Acessar um Pod em um Namespace específico
 
-Você tem um Pod chamado my-app rodando no namespace dev. Como você acessaria o terminal desse Pod?
+Você tem um Pod chamado my-nginx rodando no namespace dev. Como você acessaria o terminal desse Pod?
+
+````
+kubectl exec -it my-nginx -n default -- /bin/bash
+````
 
 7. Configurar um ConfigMap
 
 Crie um ConfigMap chamado app-config com uma chave APP_MODE definida como production.
+
+````
+kubectl create configmap app-config --from-literal=APP_MODE=production
+````
 
 8. Montar um Volume de ConfigMap em um Pod
 

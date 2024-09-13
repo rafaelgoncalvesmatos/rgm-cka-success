@@ -128,10 +128,13 @@ spec:
   storageClassName: standard
 
 ````
+
+Aplicando o PVC:
+
+````
 kubectl apply -f data-pvc.yaml
 
 ````
-
 
 10. Restringir o acesso ao namespace
 
@@ -151,6 +154,8 @@ rules:
   verbs: ["get", "list"]
 
 ````
+
+Aplicando Role no namespace:
 
 ````
 kubectl apply -f pod-reader-role.yaml

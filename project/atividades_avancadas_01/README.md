@@ -149,3 +149,89 @@ kubectl apply -f cluster-autoscaler.yaml
 * Configurar as politicas de escalonamento automatico ( maximo e minimo de nos ) de acordo com as suas necessidades.
 
 ## 4. Diagnostico de Problemas com Volumes Persistentes
+
+Um Pod está falhando ao montar um Persistent Volume Claim ( PVC ). Voce precisa diagnosticar e resolver o problema.
+
+Passos:
+1. Verificar o status do PVC e PV.
+2. Verificar os eventos associados ao Pod e PVC.
+3. Resolver o problema e aplicar novamente.
+
+Comandos:
+
+* Verificar o status do PVC:
+
+````
+kubectl get pvc
+````
+
+* Descrever o PVC para mais detalhes:
+
+````
+kubectl describe pvc <pvc-name>
+````
+
+* Verificar eventos do Pod que está usando o PVC:
+
+````
+kubectl describe pod <pod-name>
+````
+
+* Verificar o status do Persistent Volume:
+
+````
+kubectl get pv
+````
+
+## 5. Trabalhar com Secrets
+
+Voce precisa armazenar uma senha sensivel como um Secret e monta-la como uma variavel de ambiente dentro de um Pod.
+
+Passos: 
+1. Criar o Secret.
+2. Criar um Pod que usa o Secret como variavel de ambiente.
+
+Comandos:
+* Criar um Secret
+
+````
+kubectl create secret generic db-password --from-literal=password="minhasenha"
+````
+
+* Criar o Pod que usa o Secret:
+
+````yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-env-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+    env:
+    - name: DB_PASSWORD
+      volueFrom:
+        secretKeyRef:
+          name: db-password
+          key: password
+````
+
+Aplicar o Pod:
+
+````
+kubectl apply -f secret-env-pod.yaml
+````
+
+## 6. Gerenciamento de Labels e Selectors
+
+Voce precisa aplicar labels aos Pods existentes e configurar um Service para selecionar Pods baseados nessas labels.
+
+Passos.
+
+1. Aplicar labels a Pods existentes.
+2. Criar um Service que seleciona Pods com a label aplicada.
+
+Comandos:
+
+* 

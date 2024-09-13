@@ -234,4 +234,100 @@ Passos.
 
 Comandos:
 
-* 
+* Aplicar uma label a um Pod:
+
+````
+kubectl label pod <pod-name> app=my-app
+````
+
+* Criar o Service que seleciona Pods com a Label:
+
+````yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort:8080
+````
+
+Aplicar o Service:
+
+````
+kubectl apply -f service.yaml
+````
+
+## 7. Criar um Deployment com Estrategia de Rolling Update
+
+Voce precisa configurar um Deployment que atualiza os Pods de forma gradual para evitar downtime, usando rolling update.
+
+Passos: 
+1. Criar o Deployment com estrategia de rolling update.
+
+Comandos:
+
+````yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rolling-deployment
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+    selector:
+      matchLabels:
+        app: my-app
+    template:
+      metadata:
+        labels:
+          app: my-app
+      spec:
+        containers:
+        - name: my-container
+          image: nginx:1.14
+````
+
+Aplicar o Deployment:
+
+````
+kubectl apply -f rolling-deployment.yaml
+````
+
+## 8. Backup e Restore de etcd
+
+Voce precisa realizar o backup e restaurar após uma falha.
+
+Passos:
+
+1. Realizar o backup do etcd.
+2. Restaurar o backup em caso de falha.
+
+Comandos:
+* Realizar o backup do etcd:
+
+````sh
+ETCDCTL_API=3 etcdctl snapshot save snapshot.db \
+--endpoints=https://localhost:2379 \
+--cacerts=/etc/kubernetes/pki/etcd/ca.crt \
+--cert=/etc/kubernetes/pki/etcd/server.crt \
+--key=/etc/kubernetes/pki/etcd/server.key
+````
+
+* Restaurar o backup:
+
+````sh
+ETCDCTL_API=3 etcdctl snapshot restore snapshot.db \
+--endpoints=https://localhost:2379 \
+--cacerts=/etc/kubernetes/pki/etcd/ca.crt \
+--cert=/etc/kubernetes/pki/etcd/server.crt \
+--key=/etc/kubernetes/pki/etcd/server.key
+````

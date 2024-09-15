@@ -9,7 +9,6 @@ ETCDCTL_API=3 etcdctl snapshot save /tmp/etcd-backup.db \
   --cacert=/etc/kubernetes/pki/etcd/ca.crt \
   --cert=/etc/kubernetes/pki/etcd/server.crt \
   --key=/etc/kubernetes/pki/etcd/server.key
-
 ````
 
 Restaurar
@@ -20,7 +19,6 @@ ETCDCTL_API=3 etcdctl snapshot restore /tmp/etcd-backup.db \
   --initial-cluster=master=https://127.0.0.1:2380 \
   --initial-advertise-peer-urls=https://127.0.0.1:2380 \
   --name=master
-
 ````
 
 Atualizar o arquivo de configuração do ETCD com o novo data-dir.
@@ -70,12 +68,10 @@ spec:
   hard:
     requests.cpu: "4"
     requests.memory: 8Gi
-
 ````
 
 ````
 kubectl apply -f resourcequota.yaml
-
 ````
 
 4. Criar um StatefulSet
@@ -111,7 +107,6 @@ spec:
       resources:
         requests:
           storage: 5Gi
-
 ````
 
 ````
@@ -134,7 +129,6 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /mnt/data
-
 ````
 
 PVC YAML:
@@ -149,7 +143,6 @@ spec:
   resources:
     requests:
       storage: 5Gi
-
 ````
 
 Pod YAML:
@@ -169,7 +162,6 @@ spec:
   - name: app-storage
     persistentVolumeClaim:
       claimName: app-pvc
-
 ````
 
 Aplicando:
@@ -177,7 +169,6 @@ Aplicando:
 kubectl apply -f pv.yaml
 kubectl apply -f pvc.yaml
 kubectl apply -f pod-with-pvc.yaml
-
 ````
 
 6. Usar ServiceAccount para segurança
@@ -185,7 +176,6 @@ Crie um ServiceAccount chamado secure-sa no namespace prod. Crie um Pod que use 
 
 ````
 kubectl create serviceaccount secure-sa --namespace prod
-
 ````
 
 ````
@@ -199,12 +189,10 @@ spec:
   containers:
   - name: nginx
     image: nginx
-
 ````
 
 ````
 kubectl apply -f pod-with-serviceaccount.yaml
-
 ````
 
 
@@ -227,12 +215,10 @@ spec:
   containers:
   - name: nginx
     image: nginx
-
 ````
 
 ````
 kubectl apply -f podsecuritypolicy.yaml
-
 ````
 
 8. Criar um ClusterRole e ClusterRoleBinding
@@ -249,7 +235,6 @@ rules:
 - apiGroups: [""]
   resources: ["*"]
   verbs: ["get", "list", "create", "delete", "update"]
-
 ````
 
 Criar o Cluster Role Binding:
@@ -267,7 +252,6 @@ roleRef:
   kind: ClusterRole
   name: admin-role
   apiGroup: rbac.authorization.k8s.io
-
 ````
 
 Aplicando YAML:
@@ -293,12 +277,10 @@ spec:
   policyTypes:
   - Ingress
   - Egress
-
 ````
 
 ````
 kubectl apply -f networkpolicy-deny-all.yaml
-
 ````
 
 10. Gerenciar Namespaces
@@ -310,7 +292,6 @@ Criar Namespace:
 
 ````
 kubectl create namespace test-env
-
 ````
 
 Mover o Pod para o namespace (recriacao):
@@ -319,5 +300,4 @@ Mover o Pod para o namespace (recriacao):
 kubectl get pod test-pod -o yaml --export > pod.yaml
 kubectl delete pod test-pod
 kubectl apply -f pod.yaml --namespace=test-env
-
 ````

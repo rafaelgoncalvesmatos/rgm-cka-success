@@ -1,0 +1,25 @@
+configuracoes = {
+  "control" => {
+    "image"   => "ubuntu/bionic64",
+    "memory"  => "2048",
+    "cpu"     => "2",
+    "ip"      => "101"
+  },
+  "worker1" => {
+    "image"   => "ubuntu/bionic64",
+    "memory"  => "2048",
+    "cpu"     => "2",
+    "ip"      => "101"
+  },
+  "worker2" => {
+    "image"   => "ubuntu/bionic64",
+    "memory"  => "2048",
+    "cpu"     => "2",
+    "ip"      => "101"
+  },
+}
+
+Vagrant.configure("2") do |config|
+  config.vm.box_check_update = false
+  configuracoes.each do |nome,capacity|
+    config.vm.define "#nome" 

@@ -1,18 +1,18 @@
 configuracoes = {
   "control" => {
-    "image"   => "ubuntu/bionic64",
+    "images"   => "ubuntu/bionic64",
     "memory"  => "2048",
     "cpu"     => "2",
     "ip"      => "101"
   },
   "worker1" => {
-    "image"   => "ubuntu/bionic64",
+    "images"   => "ubuntu/bionic64",
     "memory"  => "2048",
     "cpu"     => "2",
     "ip"      => "101"
   },
   "worker2" => {
-    "image"   => "ubuntu/bionic64",
+    "images"   => "ubuntu/bionic64",
     "memory"  => "2048",
     "cpu"     => "2",
     "ip"      => "101"
@@ -22,4 +22,16 @@ configuracoes = {
 Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
   configuracoes.each do |nome,capacity|
-    config.vm.define "#nome" 
+    config.vm.define "#{nome}" do |maquina|
+      maquina.vm.box    = "##{capacity["images"]}"
+      maquina.vm.network "private_network", ip: ""10.5.25.#{capacity["ip"]}"
+      maquina.vm.hostname = "#{nome}.myckacertificate.com"
+      maquina.vm.provider "virtualbox" do |customizando|
+        customizando.cpus = capacity["cpu"]
+        customizando.memory = capacity["memory"]
+        customizando.name = "#{nome}.myckacertificate.com"
+        customizando.customize [ "modifyvm", :id, "--groups", "/MyCKACertificate-0777" ] 
+    end
+  end
+  end
+end

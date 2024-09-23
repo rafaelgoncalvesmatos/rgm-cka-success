@@ -24,13 +24,15 @@ Vagrant.configure("2") do |config|
   configuracoes.each do |nome,capacity|
     config.vm.define "#{nome}" do |maquina|
       maquina.vm.box    = "#{capacity["images"]}"
-      maquina.vm.network "private_network", ip: "10.5.25.#{capacity["ip"]}"
+      # maquina.vm.network "private_network", ip: "10.5.25.#{capacity["ip"]}"
       maquina.vm.network "public_network", bridge: "Killer(R) Wi-fi 6 AX 1650i 1600MHz Wireless Network Adapter (20 1NGW)"
       maquina.vm.hostname = "#{nome}.myckacertificate.com"
       maquina.vm.provider "virtualbox" do |customizando|
         customizando.cpus = capacity["cpu"]
         customizando.memory = capacity["memory"]
         customizando.name = "#{nome}.myckacertificate.com"
+        # Removed the default interface default virtualbox
+        customizando.customize ["modifyvm", :id, "--nic1", "none"]
         # customizando.customize [ "modifyvm", :id, "--groups", "/MyCKACertificate-0777" ] 
     end
   end

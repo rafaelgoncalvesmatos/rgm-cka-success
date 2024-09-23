@@ -9,13 +9,19 @@ configuracoes = {
     "images"   => "ubuntu/jammy64",
     "memory"  => "2048",
     "cpu"     => "2",
-    "ip"      => "101"
+    "ip"      => "102"
   },
   "worker2" => {
     "images"   => "ubuntu/jammy64",
     "memory"  => "6048",
     "cpu"     => "2",
-    "ip"      => "101"
+    "ip"      => "103"
+  },
+  "worker3" => {
+    "images"   => "ubuntu/jammy64",
+    "memory"  => "6048",
+    "cpu"     => "2",
+    "ip"      => "104"
   },
 }
 

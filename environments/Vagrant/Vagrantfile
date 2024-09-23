@@ -13,7 +13,7 @@ configuracoes = {
   },
   "worker2" => {
     "images"   => "ubuntu/jammy64",
-    "memory"  => "2048",
+    "memory"  => "6048",
     "cpu"     => "2",
     "ip"      => "101"
   },

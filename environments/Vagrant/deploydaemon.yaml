@@ -1,20 +1,19 @@
-# kubectl create deploy mydaemon --image=nginx --dry-run=client -o yaml
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   creationTimestamp: null
   labels:
-    app: mydaemon
-  name: mydaemon
+    app: deploydaemon
+  name: deploydaemon
 spec:
   selector:
     matchLabels:
-      app: mydaemon
+      app: deploydaemon
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: mydaemon
+        app: deploydaemon
     spec:
       containers:
       - image: nginx

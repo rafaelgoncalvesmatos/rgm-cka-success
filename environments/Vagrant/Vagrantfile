@@ -1,26 +1,26 @@
 configuracoes = {
   "control" => {
     "images"   => "ubuntu/jammy64",
-    "memory"  => "2048",
-    "cpu"     => "2",
+    "memory"  => "4048",
+    "cpu"     => "4",
     "ip"      => "101"
   },
   "worker1" => {
     "images"   => "ubuntu/jammy64",
-    "memory"  => "2048",
-    "cpu"     => "2",
+    "memory"  => "6048",
+    "cpu"     => "4",
     "ip"      => "102"
   },
   "worker2" => {
     "images"   => "ubuntu/jammy64",
     "memory"  => "6048",
-    "cpu"     => "2",
+    "cpu"     => "4",
     "ip"      => "103"
   },
   "worker3" => {
     "images"   => "ubuntu/jammy64",
     "memory"  => "6048",
-    "cpu"     => "2",
+    "cpu"     => "4",
     "ip"      => "104"
   },
 }

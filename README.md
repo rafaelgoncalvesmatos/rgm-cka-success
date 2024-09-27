@@ -45,6 +45,13 @@ Find it in your exam "cheatsheet"
 
 # Environment Tips before start exercise
 
+### Install kubecolor
+
+````shell
+sudo apt install kubecolor
+echo "alias kubectl=kubecolor" >> ~/.bashrc
+````
+
 ### Install vim
 
 ````shell

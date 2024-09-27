@@ -41,6 +41,8 @@ Find it in your exam "cheatsheet"
 
 [How is the CKA exam](https://www.youtube.com/watch?v=9UqkWcdy140)
 
+[Kodekloud - Question about the Exam](https://github.com/kodekloudhub/community-faq?tab=readme-ov-file#can-i-use-my-own-bookmarks)
+
 # Environment Tips before start exercise
 
 ### Install vim

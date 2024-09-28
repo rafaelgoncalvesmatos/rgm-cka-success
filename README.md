@@ -4,6 +4,10 @@
 
 Bem vindo ao repositorio de projetos e laboratorios. Aqui voce encontrara uma organizacao dos laboratorios.
 
+## Useful link
+
+[Cloud Champ](https://cloudchamp.notion.site/How-I-Passed-my-CKA-Exam-55fef633b454438aadc54a7261312ec9)
+
 ---
 
 ## Laboratorios

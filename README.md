@@ -10,6 +10,13 @@ Bem vindo ao repositorio de projetos e laboratorios. Aqui voce encontrara uma or
 
 ---
 
+## Test Exam
+
+https://killer.sh/dashboard
+
+https://www.study4exam.com/linux-foundation/info/cka
+
+
 ## Laboratorios
 
 ### [Lab 1](lab1/README.md)
@@ -89,11 +96,23 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 
 ````
 
+### Create simple alias
+
+````shell
+echo 'alias k=kubectl' >> .bashrc 
+````
+
 ### Force delete all nodes with parameters
 
 ````shell
 export now="--force --grace-period=0"
 
 k delete pod nginx $now
+````
+
+#### Backup of bashrc
+
+````shell
+cp .bashrc .bashrc.backup
 ````
 

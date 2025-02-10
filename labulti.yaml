@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: lab139pod
+  name: lab139pod
+spec:
+  nodeSelector:
+    storage: ssd
+  containers:
+  - image: nginx
+    name: lab139pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

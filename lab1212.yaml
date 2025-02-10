@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: toleratenginx
+  name: toleratenginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: toleratenginx
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: toleratenginx
+    spec:
+      tolerations:
+      - key: "type"
+        operator: "Equal"
+        value: "db"
+        effect: "NoSchedule"
+      containers: 
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}

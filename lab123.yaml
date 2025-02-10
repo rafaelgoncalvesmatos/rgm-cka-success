@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: lab123
+  name: lab123
+spec:
+  containers:
+  - image: nginx
+    name: lab123
+    resources: {}
+  - image: redis
+    name: redis
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

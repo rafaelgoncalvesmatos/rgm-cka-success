@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-resources
+  namespace: dev
+spec:
+  hard:
+    requests.cpu: "4"       # Máximo de 4 CPUs alocados
+    requests.memory: "8Gi"  # Máximo de 8Gi de memória solicitada
+    limits.cpu: "10"        # Máximo de 10 CPUs no total
+    limits.memory: "16Gi"   # Máximo de 16Gi de memória no total
